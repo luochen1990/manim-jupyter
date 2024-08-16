@@ -25,6 +25,8 @@
         buildInputs = [
           python
           pkgs.poetry
+          pkgs.libgcc.lib
+          pkgs.ffmpeg
           pkgs.pkg-config
           pkgs.cairo
           pkgs.pango
@@ -32,6 +34,11 @@
 
         shellHook = ''
           export PATH=$(poetry env info --path)/bin:$PATH
+          export LD_LIBRARY_PATH=${pkgs.lib.makeLibraryPath [
+            pkgs.pythonManylinuxPackages.manylinux2014Package
+            pkgs.libgcc.lib
+            pkgs.openssl
+          ]}:$LD_LIBRARY_PATH
         '';
       };
     });

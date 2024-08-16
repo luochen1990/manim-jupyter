@@ -25,6 +25,9 @@
         buildInputs = [
           python
           pkgs.poetry
+          pkgs.pkg-config
+          pkgs.cairo
+          pkgs.pango
         ];
 
         shellHook = ''

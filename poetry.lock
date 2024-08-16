@@ -156,6 +156,21 @@ tests = ["cloudpickle", "hypothesis", "mypy (>=1.11.1)", "pympler", "pytest (>=4
 tests-mypy = ["mypy (>=1.11.1)", "pytest-mypy-plugins"]
 
 [[package]]
+name = "azure-cognitiveservices-speech"
+version = "1.40.0"
+description = "Microsoft Cognitive Services Speech SDK for Python"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "azure_cognitiveservices_speech-1.40.0-py3-none-macosx_10_14_x86_64.whl", hash = "sha256:c19e6e95db81e7b2931641ad9c945b8a914541feada9ae131a253ffdf4d731f4"},
+    {file = "azure_cognitiveservices_speech-1.40.0-py3-none-macosx_11_0_arm64.whl", hash = "sha256:5f9dcd42cb265ca2e7eb6e4b6a42dc0b2d5e889347cf48e0b254f6911bf88ace"},
+    {file = "azure_cognitiveservices_speech-1.40.0-py3-none-manylinux1_x86_64.whl", hash = "sha256:9fce3f8b201129adec5d7d17ee004168cff332e74e658efce4fec665eefae54b"},
+    {file = "azure_cognitiveservices_speech-1.40.0-py3-none-manylinux2014_aarch64.whl", hash = "sha256:ad72f0c476ccbbe7a733e76ea4f6eaee2df1455b9e48ba118ba72ddd971c558a"},
+    {file = "azure_cognitiveservices_speech-1.40.0-py3-none-win32.whl", hash = "sha256:74e4ead7d685d96df86a31492faddabbeec44b2c9fb16b14c9cc19430a4aa9f8"},
+    {file = "azure_cognitiveservices_speech-1.40.0-py3-none-win_amd64.whl", hash = "sha256:8f17752cd89231dd9404b70b4832c17aa1f491326c163f53bfa2c0879c03f14f"},
+]
+
+[[package]]
 name = "babel"
 version = "2.16.0"
 description = "Internationalization utilities"
@@ -694,6 +709,25 @@ files = [
 ]
 
 [[package]]
+name = "gtts"
+version = "2.5.3"
+description = "gTTS (Google Text-to-Speech), a Python library and CLI tool to interface with Google Translate text-to-speech API"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "gTTS-2.5.3-py3-none-any.whl", hash = "sha256:ca5d962f7bf57238500d83c61cf3de76b0aa78b18658f3db5c0396e604caa0f5"},
+    {file = "gtts-2.5.3.tar.gz", hash = "sha256:d9f873c2f3a397c77c7a8c5dc128fc35fbed59f3e240cef0bff6c80d8cc12106"},
+]
+
+[package.dependencies]
+click = ">=7.1,<8.2"
+requests = ">=2.27,<3"
+
+[package.extras]
+docs = ["sphinx", "sphinx-autobuild", "sphinx-click", "sphinx-mdinclude", "sphinx-rtd-theme"]
+tests = ["pytest (>=7.1.3,<8.4.0)", "pytest-cov", "testfixtures"]
+
+[[package]]
 name = "h11"
 version = "0.14.0"
 description = "A pure-Python, bring-your-own-I/O implementation of HTTP/1.1"
@@ -1205,6 +1239,39 @@ gui = ["dearpygui (>=1.0.0)"]
 jupyterlab = ["jupyterlab (>=3.0.0)", "notebook (>=6.0.0)"]
 
 [[package]]
+name = "manim-voiceover"
+version = "0.3.6.post0"
+description = "Manim plugin for all things voiceover"
+optional = false
+python-versions = ">=3.8,<4"
+files = [
+    {file = "manim_voiceover-0.3.6.post0-py3-none-any.whl", hash = "sha256:967693ee90bf64ef6db4ffc35520eddc4fabeaa89f461d14d6637b0209285660"},
+    {file = "manim_voiceover-0.3.6.post0.tar.gz", hash = "sha256:133c15842ac61e9b6e0b608c97b02b118eea1102f63c8564ed57819ee04011a4"},
+]
+
+[package.dependencies]
+azure-cognitiveservices-speech = {version = ">=1.24.0,<2.0.0", optional = true, markers = "extra == \"azure\" or extra == \"all\""}
+gTTS = {version = ">=2.2.4,<3.0.0", optional = true, markers = "extra == \"gtts\" or extra == \"all\""}
+manim = "*"
+mutagen = ">=1.46.0,<2.0.0"
+pip = ">=21.0.1"
+pydub = ">=0.25.1,<0.26.0"
+python-dotenv = ">=0.21.0,<0.22.0"
+python-slugify = ">=8.0.1,<9.0.0"
+sox = ">=1.4.1,<2.0.0"
+
+[package.extras]
+all = ["PyAudio (>=0.2.12,<0.3.0)", "azure-cognitiveservices-speech (>=1.24.0,<2.0.0)", "deepl (>=1.12.0,<2.0.0)", "elevenlabs (>=0.2.27,<0.3.0)", "gTTS (>=2.2.4,<3.0.0)", "openai (>=1.6.1,<2.0.0)", "openai-whisper (>=20230314,<20230315)", "pynput (>=1.7.6,<2.0.0)", "pyttsx3 (>=2.90,<3.0)", "stable-ts (>=2.6.2,<3.0.0)"]
+azure = ["azure-cognitiveservices-speech (>=1.24.0,<2.0.0)"]
+elevenlabs = ["elevenlabs (>=0.2.27,<0.3.0)"]
+gtts = ["gTTS (>=2.2.4,<3.0.0)"]
+openai = ["openai (>=1.6.1,<2.0.0)"]
+pyttsx3 = ["pyttsx3 (>=2.90,<3.0)"]
+recorder = ["PyAudio (>=0.2.12,<0.3.0)", "pynput (>=1.7.6,<2.0.0)"]
+transcribe = ["openai-whisper (>=20230314,<20230315)", "stable-ts (>=2.6.2,<3.0.0)"]
+translate = ["deepl (>=1.12.0,<2.0.0)"]
+
+[[package]]
 name = "manimpango"
 version = "0.5.0"
 description = "Bindings for Pango for using with Manim."
@@ -1526,6 +1593,17 @@ python-versions = "*"
 files = [
     {file = "multipledispatch-1.0.0-py3-none-any.whl", hash = "sha256:0c53cd8b077546da4e48869f49b13164bebafd0c2a5afceb6bb6a316e7fb46e4"},
     {file = "multipledispatch-1.0.0.tar.gz", hash = "sha256:5c839915465c68206c3e9c473357908216c28383b425361e5d144594bf85a7e0"},
+]
+
+[[package]]
+name = "mutagen"
+version = "1.47.0"
+description = "read and write audio tags for many formats"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "mutagen-1.47.0-py3-none-any.whl", hash = "sha256:edd96f50c5907a9539d8e5bba7245f62c9f520aef333d13392a79a4f70aca719"},
+    {file = "mutagen-1.47.0.tar.gz", hash = "sha256:719fadef0a978c31b4cf3c956261b3c58b6948b32023078a2117b1de09f0fc99"},
 ]
 
 [[package]]
@@ -1859,6 +1937,17 @@ typing = ["typing-extensions"]
 xmp = ["defusedxml"]
 
 [[package]]
+name = "pip"
+version = "24.2"
+description = "The PyPA recommended tool for installing Python packages."
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "pip-24.2-py3-none-any.whl", hash = "sha256:2cd581cf58ab7fcfca4ce8efa6dcacd0de5bf8d0a3eb9ec927e07405f4d9e2a2"},
+    {file = "pip-24.2.tar.gz", hash = "sha256:5b5e490b5e9cb275c879595064adce9ebd31b854e3e803740b72f9ccf34a45b8"},
+]
+
+[[package]]
 name = "platformdirs"
 version = "4.2.2"
 description = "A small Python package for determining appropriate platform-specific dirs, e.g. a `user data dir`."
@@ -2094,6 +2183,20 @@ files = [
 six = ">=1.5"
 
 [[package]]
+name = "python-dotenv"
+version = "0.21.1"
+description = "Read key-value pairs from a .env file and set them as environment variables"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "python-dotenv-0.21.1.tar.gz", hash = "sha256:1c93de8f636cde3ce377292818d0e440b6e45a82f215c3744979151fa8151c49"},
+    {file = "python_dotenv-0.21.1-py3-none-any.whl", hash = "sha256:41e12e0318bebc859fcc4d97d4db8d20ad21721a6aa5047dd59f090391cb549a"},
+]
+
+[package.extras]
+cli = ["click (>=5.0)"]
+
+[[package]]
 name = "python-json-logger"
 version = "2.0.7"
 description = "A python library adding a json log formatter"
@@ -2103,6 +2206,23 @@ files = [
     {file = "python-json-logger-2.0.7.tar.gz", hash = "sha256:23e7ec02d34237c5aa1e29a070193a4ea87583bb4e7f8fd06d3de8264c4b2e1c"},
     {file = "python_json_logger-2.0.7-py3-none-any.whl", hash = "sha256:f380b826a991ebbe3de4d897aeec42760035ac760345e57b812938dc8b35e2bd"},
 ]
+
+[[package]]
+name = "python-slugify"
+version = "8.0.4"
+description = "A Python slugify application that also handles Unicode"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "python-slugify-8.0.4.tar.gz", hash = "sha256:59202371d1d05b54a9e7720c5e038f928f45daaffe41dd10822f3907b937c856"},
+    {file = "python_slugify-8.0.4-py2.py3-none-any.whl", hash = "sha256:276540b79961052b66b7d116620b36518847f52d5fd9e3a70164fc8c50faa6b8"},
+]
+
+[package.dependencies]
+text-unidecode = ">=1.3"
+
+[package.extras]
+unidecode = ["Unidecode (>=1.1.1)"]
 
 [[package]]
 name = "pywin32"
@@ -2690,6 +2810,24 @@ files = [
 ]
 
 [[package]]
+name = "sox"
+version = "1.5.0"
+description = "Python wrapper around SoX."
+optional = false
+python-versions = "*"
+files = [
+    {file = "sox-1.5.0.tar.gz", hash = "sha256:12c7be5bb1f548d891fe11e82c08cf5f1a1d74e225298f60082e5aeb2469ada0"},
+]
+
+[package.dependencies]
+numpy = ">=1.9.0"
+typing-extensions = ">=3.7.4.2"
+
+[package.extras]
+docs = ["numpydoc", "sphinx (==1.2.3)", "sphinx_rtd_theme", "sphinxcontrib-napoleon"]
+tests = ["pytest", "pytest-cov", "pytest-pep8", "soundfile (>=0.11.0)"]
+
+[[package]]
 name = "srt"
 version = "3.5.3"
 description = "A tiny library for parsing, modifying, and composing SRT files."
@@ -2749,6 +2887,17 @@ tornado = ">=6.1.0"
 docs = ["myst-parser", "pydata-sphinx-theme", "sphinx"]
 test = ["pre-commit", "pytest (>=7.0)", "pytest-timeout"]
 typing = ["mypy (>=1.6,<2.0)", "traitlets (>=5.11.1)"]
+
+[[package]]
+name = "text-unidecode"
+version = "1.3"
+description = "The most basic Text::Unidecode port"
+optional = false
+python-versions = "*"
+files = [
+    {file = "text-unidecode-1.3.tar.gz", hash = "sha256:bad6603bb14d279193107714b288be206cac565dfa49aa5b105294dd5c4aab93"},
+    {file = "text_unidecode-1.3-py2.py3-none-any.whl", hash = "sha256:1311f10e8b895935241623731c2ba64f4c455287888b18189350b67134a822e8"},
+]
 
 [[package]]
 name = "tinycss2"
@@ -2979,4 +3128,4 @@ test = ["websockets"]
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.11,<3.13"
-content-hash = "7e27faa223d9e23f7692074e36979953e50b0f1553de09e3d670a72bcb152323"
+content-hash = "bc30246a3edbe77d4d5bf879813e784cdc6b5aefe5d54b9544f9da27fe22f45a"

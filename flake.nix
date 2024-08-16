@@ -11,8 +11,7 @@
     eachSystem = f: nixpkgs.lib.genAttrs supportedSystems (system: f rec {
       inherit system;
       pkgs = import nixpkgs { inherit system; };
-      python = pkgs.python310; #TODO: change to the version you want. e.g. `pkgs.python39` for python3.9;
-      # or change to `pkgs.python310.withPackages (p: [])` if you need more python packages in nixpkgs
+      python = pkgs.python3.withPackages (p: with p; [pyaudio]);
       pyver = python.version;
     });
   in
@@ -27,6 +26,7 @@
           pkgs.poetry
           pkgs.libgcc.lib
           pkgs.ffmpeg
+          pkgs.portaudio
           pkgs.pkg-config
           pkgs.cairo
           pkgs.pango

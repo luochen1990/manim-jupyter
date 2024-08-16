@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "manim-example"
+name = "manim-jupyter"
 version = "0.1.0"
-description = "Try manim (the tool from 3b1b) in a r13y environment"
+description = "Try manim (the tool from 3b1b) in jupyter r13y"
 authors = ["LuoChen <luochen1990@gmail.com>"]
 readme = "README.md"
 

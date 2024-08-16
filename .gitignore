@@ -1,3 +1,6 @@
+# manim generated content
+media/
+
 # nixos-develop-env
 .direnv/
 *.private.*

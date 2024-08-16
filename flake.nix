@@ -55,7 +55,7 @@
         type = "app";
         program = "${pkgs.writeShellScript "jupyter-lab" ''
           source ${self.devShells.${system}.default.shellHook}
-          jupyter lab ./src
+          jupyter lab ./notes
         ''}";
       };
     });

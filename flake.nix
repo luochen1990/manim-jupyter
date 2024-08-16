@@ -11,7 +11,7 @@
     eachSystem = f: nixpkgs.lib.genAttrs supportedSystems (system: f rec {
       inherit system;
       pkgs = import nixpkgs { inherit system; };
-      python = pkgs.python3.withPackages (p: with p; [pyaudio]);
+      python = pkgs.python3.withPackages (p: with p; [pyaudio evdev]);
       pyver = python.version;
     });
   in
@@ -27,6 +27,9 @@
           pkgs.libgcc.lib
           pkgs.ffmpeg
           pkgs.portaudio
+          pkgs.libevdev
+          pkgs.sox
+          pkgs.gettext
           pkgs.pkg-config
           pkgs.cairo
           pkgs.pango
@@ -45,14 +48,14 @@
 
     # use them via `nix run .#xxx`
     apps = eachSystem ({system, pkgs, ...}: rec {
-      default = main;
+      default = jupyter;
 
-      main = {
+      jupyter = {
         # TODO: change this script to your own app entry
         type = "app";
-        program = "${pkgs.writeShellScript "funix-app" ''
+        program = "${pkgs.writeShellScript "jupyter-lab" ''
           source ${self.devShells.${system}.default.shellHook}
-          funix ./src
+          jupyter lab ./src
         ''}";
       };
     });

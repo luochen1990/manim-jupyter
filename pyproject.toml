@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "manim-example"
+version = "0.1.0"
+description = "Try manim (the tool from 3b1b) in a r13y environment"
+authors = ["LuoChen <luochen1990@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.11,<3.13"
+manim = "^0.18.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
